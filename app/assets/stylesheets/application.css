@@ -13,3 +13,102 @@
  *= require_tree .
  *= require_self
  */
+
+
+#mainDiv {
+    height: 1000px;
+    width: 1000px;
+    /* background-color: red; */
+
+    display: grid;
+    grid-template-columns: repeat(100, 1%);
+    grid-template-rows: repeat(100, 1%);
+    background-image: url('penguins.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top;
+
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /* min-width: 160px; */
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+#dropDownId {
+    position: absolute;
+}
+
+#result {
+    /* display: none; */
+}
+
+input {
+    display: block;
+}
+
+form {
+    background: rgba(255, 255, 255, 0);
+}
+
+#targetBox {
+    width: 100px;
+    height: 100px;
+    /* background-color: teal; */
+    position: absolute;
+    border-style: solid;
+    /* display: none; */
+
+}
+
+.marker {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    border-style: solid;
+    border-color: orangered;
+}

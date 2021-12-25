@@ -1,9 +1,67 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: %i[ show edit update destroy ]
 
+  def curl_get_example
+    @result = 'failure'
+    @x1 = params[:pageX]
+    @y1 = params[:pageY]
+    @attemptDurationReceived = params[:attemptDuration]
+    @loadDate = params[:clickDate]
+
+
+    coordArray = params[:coordinates]
+    # puts 'params[:coordinates]: ' + params[:coordinates]
+    xCoord = params[:coordinates].split(',')[0].to_i
+    yCoord = params[:coordinates].split(',')[1].to_i
+
+    # puts 'xCoord: ' + xCoord
+
+    if params[:my_data] == "Waldo"
+      # puts params[:coordinates][0].to_i
+      # puts params[:coordinates][2].to_i
+
+      if xCoord == 76 && yCoord == 56
+        # render plain: "good job!"
+
+        # format.json { render json: @result }
+        # format.html { render :index, status: :created }
+        @result = 'success'
+
+        respond_to do |format|
+          format.html { render :index }
+          # format.json { render :json => @result }
+        end
+
+        
+
+
+      else
+        respond_to do |format|
+          format.html { render :index }
+          # format.json { render :json => @result }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
+        # format.json { render :json => @result }
+      end
+    end
+  end
+
+  def curl_post_example
+    render plain: "Thanks for sending a POST request with cURL! Payload: #{request.body.read}"
+  end
+
   # GET /characters or /characters.json
   def index
     @characters = Character.all
+    @result = 'failure'
+
+    respond_to do |format|
+      format.html { render :index }
+      # format.json { render :json => @result }
+    end
   end
 
   # GET /characters/1 or /characters/1.json
@@ -58,13 +116,14 @@ class CharactersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_character
-      @character = Character.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def character_params
-      params.require(:character).permit(:name, :x_coordinate, :y_coordinate)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_character
+    @character = Character.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def character_params
+    params.require(:character).permit(:name, :x_coordinate, :y_coordinate)
+  end
 end
